@@ -13,5 +13,6 @@ ln -s pengfeidotfiles/.bashrc_custom .
 ln -s pengfeidotfiles/.zshrc .
 mv .emacs.d .emacs.d~
 ln -s pengfeidotfiles/.emacs.d .
+ln -s pengfeidotfiles/.vim .
 ln -s pengfeidotfiles/.vimrc .
 ```
