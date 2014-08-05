@@ -1,4 +1,4 @@
-pengfeipengfeidotfiles.git
+pengfeidotfiles.git
 ============
 Clone and run this on a new mac osx instance to
 configure your `zsh` and `emacs` development environment as follows:
