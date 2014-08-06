@@ -1,8 +1,8 @@
 # users generic .zshrc file for zsh(1)
 
 #alias vim=emacs
-alias emacs='/usr/local/bin/emacs'
-alias enw='/usr/local/bin/emacs -nw'
+alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+alias enw='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
 
 ## Environment variable configuration
 #
@@ -372,4 +372,5 @@ if [ -e ~/.zshrc_local ]
 then
   source ~/.zshrc_local
 fi
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 export PATH=/opt/play-2.2.1:/opt/scala-2.10.2/bin:$PATH
