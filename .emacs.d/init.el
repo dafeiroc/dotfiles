@@ -16,6 +16,7 @@
 (require 'whitespace)
 (require 'dired-x)
 (require 'compile)
+(require 'multi-term)
 (ido-mode t)
 (menu-bar-mode -1)
 (normal-erase-is-backspace-mode 1)
@@ -27,6 +28,7 @@
 (setq show-trailing-whitespace t)
 (setq suggest-key-bindings t)
 (setq vc-follow-symlinks t)
+(setq multi-term-program "/bin/zsh")
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -76,9 +78,7 @@
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
-;;(setenv "PATH" (concat (getenv "PATH")))
-;;(setq exec-path (append exec-path))
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq term-buffer-maximum-size 10000)))
 
-;;(defun shell()
-;;  (interactive)
-;;  (ansi-term "/bin/zsh"))
