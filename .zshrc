@@ -53,7 +53,7 @@ ${GREEN}%(5~,%-2~/.../%2~,%~)% ${RED} $ ${RESET}'
 # http://blog.s21g.com/articles/1159
 
 _set_env_git_current_branch() {
-  GIT_CURRENT_BRANCH=$( git branch 2> /dev/null | grep '^\*' | cut -b 3- )
+  GIT_CURRENT_BRANCH=$( git branch &> /dev/null | grep '^\*' | cut -b 3- )
 }
 
 _update_rprompt () {
@@ -66,8 +66,8 @@ _update_rprompt () {
 
 precmd()
 {
-#  _set_env_git_current_branch
-#  _update_rprompt
+  _set_env_git_current_branch
+  _update_rprompt
 }
 
 
@@ -373,4 +373,4 @@ then
   source ~/.zshrc_local
 fi
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-export PATH=/opt/play-2.2.1:/opt/scala-2.10.2/bin:$PATH
+export PATH=/opt/play:/opt/scala/bin:/Applications/Keka.app/Contents/Resources:$PATH
