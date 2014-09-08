@@ -181,7 +181,7 @@ setopt complete_aliases     # aliased ls needs if file/dir completions work
 alias where="command -v"
 alias j="jobs -l"
 alias 'ps?'='ps alx |grep '
-
+alias 'history?'='history |grep '
 case "${OSTYPE}" in
 freebsd*|darwin*)
     alias ls="ls -G"
@@ -373,4 +373,4 @@ then
   source ~/.zshrc_local
 fi
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-export PATH=/opt/play:/opt/scala/bin:/Applications/Keka.app/Contents/Resources:$PATH
+export PATH=/opt/play:/opt/scala/bin:/opt/sbt/bin:/Applications/Keka.app/Contents/Resources:$PATH

@@ -5,7 +5,7 @@ configure your `zsh` and `emacs` development environment as follows:
 
 ```sh
 cd $HOME
-git clone https://github.com/dafei/pengfeidotfiles.git
+git clone https://github.com/penexco/pengfeidotfiles.git
 ln -s pengfeidotfiles/.screenrc .
 ln -s pengfeidotfiles/.bash_profile .
 ln -s pengfeidotfiles/.bashrc .
