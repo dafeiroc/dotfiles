@@ -372,5 +372,5 @@ if [ -e ~/.zshrc_local ]
 then
   source ~/.zshrc_local
 fi
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export PATH=/opt/play:/opt/activator:/opt/scala/bin:/opt/sbt/bin:/usr/local/bin:/Applications/Keka.app/Contents/Resources:$PATH
