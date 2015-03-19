@@ -373,4 +373,5 @@ then
   source ~/.zshrc_local
 fi
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-export PATH=/opt/play:/opt/activator:/opt/scala/bin:/opt/sbt/bin:/usr/local/bin:/Applications/Keka.app/Contents/Resources:$PATH
+export GEM_HOME=$HOME/.gem                                                      
+export PATH=/opt/maven/bin:$GEM_HOME/ruby/2.0.0/bin:/opt/activator:/opt/scala/bin:/opt/sbt/bin:/usr/local/bin:/Applications/Keka.app/Contents/Resources:$PATH
