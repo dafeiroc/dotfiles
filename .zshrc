@@ -374,4 +374,4 @@ then
 fi
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export GEM_HOME=$HOME/.gem                                                      
-export PATH=/opt/maven/bin:$GEM_HOME/ruby/2.0.0/bin:/opt/activator:/opt/scala/bin:/opt/sbt/bin:/usr/local/bin:/Applications/Keka.app/Contents/Resources:$PATH
+export PATH=/opt/ant/bin:/opt/maven/bin:$GEM_HOME/ruby/2.0.0/bin:/opt/activator:/opt/scala/bin:/opt/sbt/bin:/usr/local/bin:/Applications/Keka.app/Contents/Resources:$PATH
