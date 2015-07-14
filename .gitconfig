@@ -9,6 +9,14 @@
 	br = branch
 	up = rebase
 	ci = commit
+# Clone a repository including all submodules
+    c = clone --recursive
+# View abbreviated SHA, description, and history graph of the latest 20 commits
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+# View more detailed log with stats of the latest 10 commits
+    ll = log -n 20 --stat --abbrev-commit
+
 [usr]
 	name = Pengfei Zhang
 [filter "hawser"]
