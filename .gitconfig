@@ -1,0 +1,17 @@
+[user]
+	name = Pengfei Zhang
+	email = pfzhang1987@gmail.com
+[core]
+	editor = vim
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	up = rebase
+	ci = commit
+[usr]
+	name = Pengfei Zhang
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
