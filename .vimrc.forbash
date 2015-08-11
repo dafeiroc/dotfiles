@@ -1,0 +1,496 @@
+" Environment {
+    set nocompatible
+" }
+
+" Language Support Settings {
+    if filereadable(expand("~/.vimrc.languages"))
+        source ~/.vimrc.languages
+    endif
+" }
+
+
+" Plugins config {
+    if filereadable(expand("~/.vimrc.plugins"))
+        source ~/.vimrc.plugins
+    endif
+" }
+
+
+" General settings {
+
+    filetype plugin indent on         " automatically detect file types
+    syntax on                         " syntax highlighting
+    set mouse=a                       " automatically enable mouse usage
+    set mousehide                     " hide mouse cursor when typing
+
+    scriptencoding utf-8
+
+    " Better unix compatibility
+    set viewoptions=folds,options,cursor,unix,slash
+
+    set shortmess+=filmnrxoOtT        " message abbreviation
+    set virtualedit=onemore           " cursor can go one beyond last char
+    set history=1000                  " store a lot of history
+
+    " Backup and undo
+    set backup                        " backups are nice ...
+    if has('persistent_undo')
+      set undofile                    " so is persistent_undo
+      set undolevels=1000             " max changes that can be undone
+      set undoreload=10000            " max lines to save for undo on reload
+    endif
+    set hidden                        " allow buffer switching without saving
+
+    " Modeline
+    set modeline                      " last lines in document sets vim mode
+    set modelines=3                   " number of lines checked for modelines
+
+    if has("autocmd")
+        au BufWinLeave * silent! mkview   " make vim save view(state) (folds, cursor, etc)
+        au BufWinEnter * silent! loadview " make vim load view(state) (folds, cursor, etc)
+
+        " switch to the current file directory
+        au BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+
+        " Instead of reverting the cursor to the last position in the buffer, we
+        " set it to the first line when editing a git commit message
+        au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+        " restore cursor position
+        au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+    endif
+
+" }
+
+
+" UI {
+
+    " Colorscheme {
+        set background=dark           " set a default dark background
+        if filereadable(expand("~/.vim/colors/solarized.vim"))
+            let g:solarized_contrast="high"
+            let g:solarized_visibility="high"
+"            color solarized           " load colorscheme
+        endif
+    " }
+
+    " general ui settings {
+        set tabpagemax=15             " only show 15 tabs
+        set showmode                  " display the current mode
+        set title                     " Show the filename in the window titlebar
+        set cursorline                " highlight current line
+        highlight clear SignColumn    " signcolumn should match background
+        highlight clear LineNr        " Current line number row will have same background color in relative mode
+        set visualbell t_vb=          " turn off error beep/flash
+        set novisualbell              " turn off visual bell
+        set ttyfast                   " smoother changes
+        set guicursor=n-v-c:block-Cursor    " Cursor shape (insert => vertical line)
+
+        if has('cmdline_info')
+            set ruler                 " show the cursor position all the time
+            set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+            set showcmd               " display incomplete commands
+        endif
+
+        if has('statusline')
+            set laststatus=2
+
+            " Broken down into easily includeable segments
+            set statusline=%<%f\                        " filename
+            set statusline+=%w%h%m%r                    " options
+            set statusline+=%{fugitive#statusline()}    " git
+            set statusline+=\ [%{&ff}/%Y]               " filetype
+            set statusline+=\ [%{getcwd()}]             " current dir
+            " set statusline+=\ [A=\%03.3b/H=\%02.2B]     " aSCII / Hexadecimal value of char
+            set statusline+=%=%-14.(%l,%c%V%)\ %p%%     " right aligned file nav info
+        endif
+
+        set backspace=2                     " make backspace like most other apps
+        set linespace=0                     " No extra space between rows
+        set showmatch                       " show matching brackets/parens
+        set number                          " show line numbers
+        set incsearch                       " do incremental searching
+        set hlsearch                        " highligh searches
+        set ignorecase                      " ignore case when searching
+        set smartcase                       " ... but not when uppercase is used
+        set wildmenu                        " Show list instead of just completing
+        set wildmode=list:longest,full      " Command <Tab> completion, list matches, then longest common part, then all.
+        set whichwrap=b,s,h,l,<,>,[,]       " move freely between files
+        set scrolljump=5                    " lines to scroll when cursor leaves screen
+        set scrolloff=3                     " keep 3 lines when scrolling
+        " set foldenable                      " auto fold code
+        set list
+        set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+        set splitright                      " put new vsplit windows to the right of the current
+        set splitbelow                      " put new split windows to the bottom of the current
+
+    " }
+
+" }
+
+
+" Formatting {
+
+    set nowrap                        " don't wrap long lines
+    set autoindent                    " indent at the same level of the previous line
+    set tabstop=2                     " numbers of spaces of tab character
+    set shiftwidth=2                  " numbers of spaces to (auto)indent
+    set expandtab                     " tabs are converted to spaces, use only when required
+    set softtabstop=2                 " let backspace delete indent
+    set pastetoggle=<F12>             " pastetoggle (sane indentation on pastes)
+
+    if has("autocmd")
+        au FileType c,cpp,java,scala,go,php,javascript,puppet,python,rust,twig,xml,yml,perl au BufWritePre <buffer> call StripTrailingWhitespace()
+        au BufNewFile,BufRead  *.scala    set syntax=scala
+        au FileType haskell setlocal commentstring=--\ %s
+    endif
+
+" }
+
+
+" Key (re)mapping {
+
+    " leader & localleader
+    let mapleader = ','
+    let maplocalleader = ',,'
+
+    " easier moving in tabs and windows
+    map <C-J> <C-W>j<C-W>_
+    map <C-K> <C-W>k<C-W>_
+    map <C-L> <C-W>l<C-W>_
+    map <C-H> <C-W>h<C-W>_
+
+    " move between tabs (next an previous)
+    map <S-H> gT
+    map <S-L> gt
+
+    " yank from the cursor to the end of the line, to be consistent with C and D.
+    nnoremap Y y$
+
+    " code folding options
+    nmap <leader>f0 :set foldlevel=0<CR>
+    nmap <leader>f1 :set foldlevel=1<CR>
+    nmap <leader>f2 :set foldlevel=2<CR>
+    nmap <leader>f3 :set foldlevel=3<CR>
+    nmap <leader>f4 :set foldlevel=4<CR>
+    nmap <leader>f5 :set foldlevel=5<CR>
+    nmap <leader>f6 :set foldlevel=6<CR>
+    nmap <leader>f7 :set foldlevel=7<CR>
+    nmap <leader>f8 :set foldlevel=8<CR>
+    nmap <leader>f9 :set foldlevel=9<CR>
+
+    " clearing highlighted search
+    nmap <silent> <leader>/ :nohlsearch<CR>
+
+    " find merge conflict markers
+    map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+
+    " visual shifting (does not exit Visual mode)
+    vnoremap < <gv
+    vnoremap > >gv
+
+    " for when you forget to sudo.. Really Write the file.
+    cmap w!! w !sudo tee % >/dev/null
+
+    " helpers to edit mode
+    cnoremap %% <C-R>=expand('%:h').'/'<cr>
+    map <leader>ew :e %%
+    map <leader>es :sp %%
+    map <leader>ev :vsp %%
+    map <leader>et :tabe %%
+
+    " map <Leader>ff to display all lines with keyword under cursor and ask which one to jump to
+    nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
+    " Fix home and end keybindings for screen, particularly on mac
+    " - for some reason this fixes the arrow keys too. huh.
+    map [F $
+    imap [F $
+    map [H g0
+    imap [H g0
+
+" }
+
+
+" Plugins settings {
+
+    " Powerline {
+        set guifont=Menlo\ for\ Powerline
+        let g:Powerline_symbols = 'fancy'
+    " }
+
+    " Ctags {
+        set tags=./tags;/,~/.vimtags
+
+        " Make tags placed in .git/tags file available in all levels of a repository
+        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+        if gitroot != ''
+            let &tags = &tags . ',' . gitroot . '/.git/tags'
+        endif
+    " }
+
+    " NerdTree {
+        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+            map <C-e> <plug>NERDTreeTabsToggle<CR>
+            map <leader>e :NERDTreeFind<CR>
+            nmap <leader>nt :NERDTreeFind<CR>
+
+            let NERDTreeShowBookmarks=1
+            let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+            let NERDTreeChDirMode=0
+            let NERDTreeQuitOnOpen=1
+            let NERDTreeMouseMode=2
+            let NERDTreeShowHidden=1
+            let NERDTreeKeepTreeInNewTab=1
+            let g:NERDShutUp=1
+            let g:nerdtree_tabs_open_on_gui_startup=0
+        endif
+    " }
+
+    " UndoTree {
+        if isdirectory(expand("~/.vim/bundle/undotree/"))
+            nnoremap <Leader>u :UndotreeToggle<CR>
+            let g:undotree_SetFocusWhenToggle=1
+        endif
+    " }
+
+    " Ctrlp {
+        if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+            let g:ctrlp_working_path_mode = 'ra'
+            let g:ctrlp_custom_ignore = {
+                \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+                \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+            if executable('ag')
+                let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+            elseif executable('ack-grep')
+                let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+            elseif executable('ack')
+                let s:ctrlp_fallback = 'ack %s --nocolor -f'
+            else
+                let s:ctrlp_fallback = 'find %s -type f'
+            endif
+            let g:ctrlp_user_command = {
+                \ 'types': {
+                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+                \ },
+                \ 'fallback': s:ctrlp_fallback
+            \ }
+            if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
+                " CtrlP extensions
+                let g:ctrlp_extensions = ['funky']
+
+                "funky
+                nnoremap <Leader>fu :CtrlPFunky<Cr>
+            endif
+        endif
+    " }
+
+    " Tagbar {
+        if isdirectory(expand("~/.vim/bundle/tagbar/"))
+            nnoremap <silent> <leader>tt :TagbarToggle<CR>
+        endif
+    " }
+
+    " Fugitive {
+        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+            nnoremap <silent> <leader>gs :Gstatus<CR>
+            nnoremap <silent> <leader>gd :Gdiff<CR>
+            nnoremap <silent> <leader>gc :Gcommit<CR>
+            nnoremap <silent> <leader>gb :Gblame<CR>
+            nnoremap <silent> <leader>gl :Glog<CR>
+            nnoremap <silent> <leader>gp :Git push<CR>
+            nnoremap <silent> <leader>gr :Gread<CR>
+            nnoremap <silent> <leader>gw :Gwrite<CR>
+            nnoremap <silent> <leader>ge :Gedit<CR>
+            nnoremap <silent> <leader>gi :Git add -p %<CR>
+            nnoremap <silent> <leader>gg :SignifyToggle<CR>
+        endif
+    " }
+
+    " neocomplete {
+        if isdirectory(expand("~/.vim/bundle/neocomplete.vim/"))
+            let g:acp_enableAtStartup = 0
+            let g:neocomplete#enable_at_startup = 1
+            let g:neocomplete#enable_smart_case = 1
+            let g:neocomplete#enable_auto_delimiter = 1
+            let g:neocomplete#max_list = 15
+            let g:neocomplete#force_overwrite_completefunc = 1
+
+
+            " Define dictionary.
+            let g:neocomplete#sources#dictionary#dictionaries = {
+                        \ 'default' : '',
+                        \ 'vimshell' : $HOME.'/.vimshell_hist',
+                        \ 'scheme' : $HOME.'/.gosh_completions'
+                        \ }
+
+            " Define keyword.
+            if !exists('g:neocomplete#keyword_patterns')
+                let g:neocomplete#keyword_patterns = {}
+            endif
+            let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+            " Plugin key-mappings {
+                imap <C-l> <Plug>(neosnippet_expand_or_jump)
+                smap <C-l> <Plug>(neosnippet_expand_or_jump)
+                imap <silent><expr><C-l> neosnippet#expandable() ?
+                            \ "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ?
+                            \ "\<C-e>" : "\<Plug>(neosnippet_expand_or_jump)")
+                smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
+
+                inoremap <expr><C-g> neocomplete#undo_completion()
+                inoremap <expr><C-l> neocomplete#complete_common_string()
+                "inoremap <expr><CR> neocomplete#complete_common_string()
+
+                " <CR>: close popup
+                " <s-CR>: close popup and save indent.
+                inoremap <expr><s-CR> pumvisible() ? neocomplete#smart_close_popup()"\<CR>" : "\<CR>"
+
+                function! CleverCr()
+                    if pumvisible()
+                        if neosnippet#expandable()
+                            let exp = "\<Plug>(neosnippet_expand)"
+                            return exp . neocomplete#smart_close_popup()
+                        else
+                            return neocomplete#smart_close_popup()
+                        endif
+                    else
+                        return "\<CR>"
+                    endif
+                endfunction
+
+                " <CR> close popup and save indent or expand snippet
+                imap <expr> <CR> CleverCr()
+                " <C-h>, <BS>: close popup and delete backword char.
+                inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+                inoremap <expr><C-y> neocomplete#smart_close_popup()
+                " <TAB>: completion.
+                inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+                inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+                " Courtesy of Matteo Cavalleri
+
+                function! CleverTab()
+                    if pumvisible()
+                        return "\<C-n>"
+                    endif
+                    let substr = strpart(getline('.'), 0, col('.') - 1)
+                    let substr = matchstr(substr, '[^ \t]*$')
+                    if strlen(substr) == 0
+                        " nothing to match on empty string
+                        return "\<Tab>"
+                    else
+                        " existing text matching
+                        if neosnippet#expandable_or_jumpable()
+                            return "\<Plug>(neosnippet_expand_or_jump)"
+                        else
+                            return neocomplete#start_manual_complete()
+                        endif
+                    endif
+                endfunction
+
+                imap <expr> <Tab> CleverTab()
+            " }
+
+            " Enable heavy omni completion.
+            if !exists('g:neocomplete#sources#omni#input_patterns')
+                let g:neocomplete#sources#omni#input_patterns = {}
+            endif
+            let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+            let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+            let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+            let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+            let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+        endif
+    " }
+
+" }
+
+
+" GUI {
+
+    if has('gui_running')
+        set guioptions-=T           " Remove the toolbar
+        set lines=40                " 40 lines of text instead of 24
+    else
+        if &term == 'xterm' || &term == 'screen'
+            set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+        endif
+    endif
+
+" }
+
+
+" Functions {
+
+    " Initialize directories {
+    function! InitializeDirectories()
+        let parent = $HOME
+        let prefix = 'vim'
+        let dir_list = {
+                    \ 'backup': 'backupdir',
+                    \ 'views': 'viewdir',
+                    \ 'swap': 'directory' }
+
+        if has('persistent_undo')
+            let dir_list['undo'] = 'undodir'
+        endif
+
+        let common_dir = parent . '/.' . prefix
+
+        for [dirname, settingname] in items(dir_list)
+            let directory = common_dir . dirname . '/'
+            if exists("*mkdir")
+                if !isdirectory(directory)
+                    call mkdir(directory)
+                endif
+            endif
+            if !isdirectory(directory)
+                echo "Warning: Unable to create backup directory: " . directory
+                echo "Try: mkdir -p " . directory
+            else
+                let directory = substitute(directory, " ", "\\\\ ", "g")
+                exec "set " . settingname . "=" . directory
+            endif
+        endfor
+    endfunction
+    call InitializeDirectories()
+    " }
+
+    " Initialize NERDTree as needed {
+    function! NERDTreeInitAsNeeded()
+        redir => bufoutput
+        buffers!
+        redir END
+        let idx = stridx(bufoutput, "NERD_tree")
+        if idx > -1
+            NERDTreeMirror
+            NERDTreeFind
+            wincmd l
+        endif
+    endfunction
+    " }
+
+    " Strip whitespace {
+    function! StripTrailingWhitespace()
+        " Preparation: save last search, and cursor position.
+        let _s=@/
+        let l = line(".")
+        let c = col(".")
+        " do the business:
+        %s/\s\+$//e
+        " clean up: restore previous search history, and cursor position
+        let @/=_s
+        call cursor(l, c)
+    endfunction
+    " }
+
+" }
+
+
+" Local vimrc config {
+    if filereadable(expand("~/.vimrc.local"))
+        source ~/.vimrc.local
+    endif
+" }
