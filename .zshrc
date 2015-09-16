@@ -204,7 +204,6 @@ alias su="su -l"
 alias gls='git ls-files'
 alias mi='make install'
 alias mr='make uninstall'
-
 case "${OSTYPE}" in
 darwin*)
     alias updateports="sudo port selfupdate; sudo port outdated"
@@ -309,11 +308,11 @@ export EDITOR=vim
 export PATH=$PATH:$HOME/local/bin:/usr/local/git/bin
 export PATH=/usr/local/bin:$PATH:/sbin
 export MANPATH=$MANPATH:/opt/local/man:/usr/local/share/man
-export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages
+#export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages
 #export PYTHONPATH=$PYTHONPATH:/Library/Python/2.5/site-packages
 #export PYTHONPATH=.:../third_party:./third_party:$PYTHONPATH
 #export PYTHONPATH=/opt/local/lib/python2.6/site-packages:$PYTHONPATH
-export PYTHONPATH=$PYTHONPATH:/System/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/site-packages
+#export PYTHONPATH=$PYTHONPATH:/System/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/site-packages
 
 expand-to-home-or-insert () {
         if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
@@ -374,4 +373,4 @@ then
 fi
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export GEM_HOME=$HOME/.gem                                                      
-export PATH=/opt/ant/bin:/opt/maven/bin:$GEM_HOME/ruby/2.0.0/bin:/opt/activator:/opt/scala/bin:/opt/sbt/bin:/usr/local/bin:/Applications/Keka.app/Contents/Resources:$PATH
+export PATH=/anaconda/bin:/opt/ant/bin:/opt/maven/bin:$GEM_HOME/ruby/2.0.0/bin:/opt/activator:/opt/scala/bin:/opt/sbt/bin:/usr/local/bin:/Applications/Keka.app/Contents/Resources:$PATH
