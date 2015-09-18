@@ -193,13 +193,13 @@ linux*)
     ;;
 esac
 
+alias which="which -a"
 alias la="ls -a"
 alias lf="ls -F"
 alias ll="ls -alrth"
 
 alias du="du -h"
 alias df="df -h"
-
 alias su="su -l"
 alias gls='git ls-files'
 alias mi='make install'
