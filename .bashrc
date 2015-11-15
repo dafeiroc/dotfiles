@@ -168,6 +168,7 @@ PS1="\[\033[0;34m\][\u@\h:\w]$\[\033[0m\] "
 ## -- 2) Set up aliases --
 ## -----------------------
 
+alias which="which -a"
 # 2.1) Safety
 alias rm="rm -i"
 alias mv="mv -i"
