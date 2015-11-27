@@ -54,7 +54,8 @@ set smartcase
 "https://github.com/tpope/vim-pathogen
 execute pathogen#infect()
 " Syntax highlighting
-syntax enable
+syntax on
+filetype plugin indent on
 set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
