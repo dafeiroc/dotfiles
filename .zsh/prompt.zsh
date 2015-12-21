@@ -9,7 +9,7 @@ function prompt_char {
 }
 
 function box_name {
-    [ -f ~/.box-name ] && cat ~/.box-name || hostname -s
+    [ -f ~/.box_name ] && cat ~/.box_name || hostname -s
 }
 
 # http://blog.joshdick.net/2012/12/30/my_git_prompt_for_zsh.html
