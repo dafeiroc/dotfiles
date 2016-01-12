@@ -15,6 +15,5 @@ ln -s pengfeidotfiles/.zsh .
 ln -s pengfeidotfiles/.box_name .
 mv .emacs.d .emacs.d~
 ln -s pengfeidotfiles/.emacs.d .
-ln -s pengfeidotfiles/.vim .
 ln -s pengfeidotfiles/.vimrc .
 ```
