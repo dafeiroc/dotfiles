@@ -1,6 +1,6 @@
 # Currently this path is appended to dynamically when picking a ruby version
 # zshenv has already started PATH with rbenv so append only here
-export PATH=/anaconda/bin:/opt/ant/bin:/opt/maven/bin:$GEM_HOME/ruby/2.0.0/bin:/opt/activator:/opt/scala/bin:/opt/sbt/bin:/usr/local/bin:/Applications/Keka.app/Contents/Resources:$PATH
+export PATH=~/anaconda2/bin:/usr/local/bin:/Applications/Keka.app/Contents/Resources:$PATH
 
 # Set default console Java to 1.6
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
