@@ -10,6 +10,6 @@ source ~/.zsh/functions.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/zsh_hooks.zsh
 source ~/.zsh/z.sh
-source ~/.zsh/completion.zsh.inc
-source ~/.zsh/path.zsh.inc
+source ~/.zsh/completions/completion.zsh.inc
+source ~/.zsh/completions/path.zsh.inc
 
