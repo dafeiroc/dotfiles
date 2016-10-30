@@ -13,3 +13,6 @@ source ~/.zsh/z.sh
 source ~/.zsh/completions/completion.zsh.inc
 source ~/.zsh/completions/path.zsh.inc
 
+
+export NVM_DIR="/Users/01013863/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
