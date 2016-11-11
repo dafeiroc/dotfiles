@@ -16,3 +16,9 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 # aws cli
 source /usr/local/bin/aws_zsh_completer.sh
 
+# for kubectl
+
+if [ $commands[kubectl] ]; then
+      source <(kubectl completion zsh)
+fi
+
