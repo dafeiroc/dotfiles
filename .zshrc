@@ -10,6 +10,9 @@ source ~/.zsh/functions.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/zsh_hooks.zsh
 source ~/.zsh/z.sh
-source ~/.zsh/completions/completion.zsh.inc
-source ~/.zsh/completions/path.zsh.inc
+# google-cloud-sdk
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+# aws cli
+source /usr/local/bin/aws_zsh_completer.sh
 
