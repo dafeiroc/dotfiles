@@ -18,7 +18,7 @@ source /usr/local/bin/aws_zsh_completer.sh
 
 # for kubectl
 
-if [ $commands[kubectl] ]; then
-      source <(kubectl completion zsh)
-fi
+#if [ $commands[kubectl] ]; then
+#      source <(kubectl completion zsh)
+#fi
 
