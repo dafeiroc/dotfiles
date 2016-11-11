@@ -3,7 +3,7 @@
 	email = pfzhang1987@gmail.com
 [core]
 	editor = vim
-	excludesfile = /Users/dafei/.gitignore_global
+	excludesfile = /Users/01013863/.gitignore_global
 [alias]
 	st = status
 	co = checkout
