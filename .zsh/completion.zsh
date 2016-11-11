@@ -1,6 +1,11 @@
-fpath=(/usr/local/share/zsh-completions $fpath)
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit                                                                                       
+fpath=(
+  /usr/local/share/zsh/functions
+  /usr/local/share/zsh/site-functions
+  /usr/local/share/zsh-completions
+  ~/.zsh/completion 
+  $fpath
+)
+autoload -U compinit && compinit                                                                                       
 zmodload -i zsh/complist
 
 # man zshcontrib
