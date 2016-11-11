@@ -13,9 +13,6 @@ source ~/.zsh/z.sh
 # google-cloud-sdk
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-# aws cli
-source /usr/local/bin/aws_zsh_completer.sh
-
 # for kubectl
 source <(kubectl completion zsh)
 # Workaround for https://github.com/kubernetes/kubernetes/issues/27538
@@ -23,3 +20,5 @@ complete -o nospace -o default -F _python_argcomplete "gcloud"
 complete -o default -F _bq_completer bq
 complete -o nospace -F _python_argcomplete gsutil
 
+# aws cli
+source /usr/local/bin/aws_zsh_completer.sh
