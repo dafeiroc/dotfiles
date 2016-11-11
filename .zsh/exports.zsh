@@ -1,6 +1,6 @@
 # Currently this path is appended to dynamically when picking a ruby version
 # zshenv has already started PATH with rbenv so append only here
-export PATH=/usr/local/bin:$PATH
+export PATH=$PATH
 
 # Set default console Java to 1.6
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
