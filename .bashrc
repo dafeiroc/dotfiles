@@ -220,6 +220,10 @@ if [ -s ~/.nvm/nvm.sh ]; then
     nvm use v0.10.12 &> /dev/null # silence nvm use; needed for rsync
 fi
 
+## Add rbenv to bash so that it loads every time you open a terminal
+if which rbenv > /dev/null; then 
+    eval "$(rbenv init -)"; 
+fi
 ## ------------------------------
 ## -- 3) User-customized code  --
 ## ------------------------------

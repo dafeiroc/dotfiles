@@ -190,3 +190,7 @@ alias nomz='ps aux | less'
 alias nomnom='killall'
 alias cya='reboot'
 alias kthxbai='halt'
+
+## docker 
+alias dockerrm='docker rm $(docker ps -q -f status=exited)'
+
