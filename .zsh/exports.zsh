@@ -1,6 +1,5 @@
 # Currently this path is appended to dynamically when picking a ruby version
 # zshenv has already started PATH with rbenv so append only here
-export PATH=$PATH
 
 # Set default console Java to 1.6
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
@@ -35,3 +34,6 @@ export LANG=en_US.UTF-8
 export DRONE_SERVER=https://drone2.cetlog.jp
 export DRONE_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXh0IjoicGVuZyIsInR5cGUiOiJ1c2VyIn0.cgMGfPzZR-nx4z8E0pJ7oOLfAuZqD_xYtNVvYxzWNqY
 # Virtual Environment Stuff
+export GOROOT=/usr/local/Cellar/go/1.7.3
+export PATH=$PATH:$GOROOT/bin
+
