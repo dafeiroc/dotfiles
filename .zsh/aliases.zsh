@@ -194,3 +194,4 @@ alias kthxbai='halt'
 ## docker 
 alias dockerrm='docker rm $(docker ps -q -f status=exited)'
 
+alias deletef='find . -type d -name ".svn" -print -exec rm -rf {} \;'
