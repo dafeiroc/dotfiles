@@ -2,33 +2,4 @@
 	name = Pengfei Zhang
 	email = pfzhang1987@gmail.com
 [core]
-	editor = vim
 	excludesfile = /Users/01013863/.gitignore_global
-[alias]
-	st = status
-	co = checkout
-	br = branch
-	up = rebase
-	ci = commit
-# Clone a repository including all submodules
-    c = clone --recursive
-# View abbreviated SHA, description, and history graph of the latest 20 commits
-    l = log --pretty=oneline -n 20 --graph --abbrev-commit
-
-# View more detailed log with stats of the latest 10 commits
-    ll = log -n 20 --stat --abbrev-commit
-
-[usr]
-	name = Pengfei Zhang
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[credential]
-	helper = osxkeychain
