@@ -34,7 +34,7 @@ export LANG=en_US.UTF-8
 export DRONE_SERVER=https://drone2.cetlog.jp
 export DRONE_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXh0IjoicGVuZyIsInR5cGUiOiJ1c2VyIn0.cgMGfPzZR-nx4z8E0pJ7oOLfAuZqD_xYtNVvYxzWNqY
 # Virtual Environment Stuff
-export GOROOT=/usr/local/Cellar/go/1.7.3
+export GOROOT=/usr/local/Cellar/go/1.7.4
 
 # Oracle sqlplus and basic OCI config
 export LD_LIBRARY_PATH=/Users/01013863/instantclient_12_1:${LD_LIBRARY_PATH}
