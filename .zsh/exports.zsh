@@ -42,6 +42,7 @@ export SQLPATH=/Users/01013863/instantclient_12_1
 export NLS_LANG=AMERICAN_AMERICA.UTF8
 export TNS_ADMIN=/Users/01013863/devbox
 
-export PATH=/Users/01013863/instantclient_12_1:$HOME/.embulk/bin:$PATH:$GOROOT/bin
+# added by Anaconda2 4.3.0 installer
+export PATH=/Users/01013863/anaconda2/bin:/Users/01013863/instantclient_12_1:$HOME/.embulk/bin:$GOROOT/bin:$PATH
 
 
