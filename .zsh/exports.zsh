@@ -45,4 +45,5 @@ export TNS_ADMIN=/Users/01013863/devbox
 # added by Anaconda2 4.3.0 installer
 export PATH=/Users/01013863/anaconda2/bin:/Users/01013863/instantclient_12_1:$HOME/.embulk/bin:$GOROOT/bin:$PATH
 
-
+# Add GCP keys
+export GOOGLE_JSON_KEY_LOCATION=/Users/01013863/.ssh/gcp-myproin-prd-account.json
