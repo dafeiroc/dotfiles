@@ -5,3 +5,8 @@
 	excludesfile = /Users/01013863/.gitignore_global
 	safecrlf = true
 	autocrlf = input
+	editor = vi
+[color]
+	ui = auto
+[merg]
+	conflictstyle = diff3
