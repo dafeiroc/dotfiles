@@ -1,3 +1,20 @@
+# ----------------
+# ZSH / BASH users
+# Add this to your .env, .bashrc, .zshrc, or whatever file you're using for environment
+# (https://gist.githubusercontent.com/supermarin/6dca255da372c3f9eb26/raw/1e5e5ed9df17a8b558ccc3fcec77671bf2a2adea/.env)
+# ---------------
+man() {
+        env \
+                LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+                LESS_TERMCAP_md=$(printf "\e[1;31m") \
+                LESS_TERMCAP_me=$(printf "\e[0m") \
+                LESS_TERMCAP_se=$(printf "\e[0m") \
+                LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+                LESS_TERMCAP_ue=$(printf "\e[0m") \
+                LESS_TERMCAP_us=$(printf "\e[1;32m") \
+                man $@
+}
+
 # -------------------------------------------------------------------
 # compressed file expander 
 # (from https://github.com/myfreeweb/zshuery/blob/master/zshuery.sh)
