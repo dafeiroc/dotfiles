@@ -37,13 +37,13 @@ export DRONE_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXh0IjoicGVuZyIsInR5
 export GOROOT=/usr/local/Cellar/go/1.7.4
 
 # Oracle sqlplus and basic OCI config
-export LD_LIBRARY_PATH=/Users/01013863/instantclient_12_1:${LD_LIBRARY_PATH}
-export SQLPATH=/Users/01013863/instantclient_12_1
+export LD_LIBRARY_PATH=/Users/pengfeiz/instantclient_12_1:${LD_LIBRARY_PATH}
+export SQLPATH=/Users/pengfeiz/instantclient_12_1
 export NLS_LANG=AMERICAN_AMERICA.UTF8
-export TNS_ADMIN=/Users/01013863/devbox
+export TNS_ADMIN=/Users/pengfeiz/devbox
 
 # added by Anaconda2 4.3.0 installer
-export PATH=/Users/01013863/anaconda2/bin:/Users/01013863/instantclient_12_1:$HOME/.embulk/bin:$GOROOT/bin:$PATH
+export PATH=/usr/local/opt/libpcap/bin:/Users/pengfeiz/anaconda2/bin:/Users/pengfeiz/instantclient_12_1:$HOME/.embulk/bin:$GOROOT/bin:$PATH
 
 # Add GCP keys
-export GOOGLE_JSON_KEY_LOCATION=/Users/01013863/.ssh/gcp-myproin-prd-account.json
+export GOOGLE_JSON_KEY_LOCATION=/Users/pengfeiz/.ssh/gcp-myproin-prd-account.json
