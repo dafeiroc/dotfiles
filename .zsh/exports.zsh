@@ -43,7 +43,7 @@ export NLS_LANG=AMERICAN_AMERICA.UTF8
 export TNS_ADMIN=/Users/pengfeiz/devbox
 
 # added by Anaconda2 4.3.0 installer
-export PATH=/usr/local/opt/libpcap/bin:/Users/pengfeiz/anaconda2/bin:/Users/pengfeiz/instantclient_12_1:$HOME/.embulk/bin:$GOROOT/bin:$PATH
+export PATH=/usr/local/opt/libpcap/bin:/Users/pengfeiz/anaconda3/bin:/Users/pengfeiz/instantclient_12_1:$HOME/.embulk/bin:$GOROOT/bin:$PATH
 
 # Add GCP keys
-export GOOGLE_JSON_KEY_LOCATION=/Users/pengfeiz/.ssh/gcp-myproin-prd-account.json
+export GOOGLE_JSON_KEY_LOCATION=/Users/pengfeiz/.ssh/gcp-bitter-prd-account.json

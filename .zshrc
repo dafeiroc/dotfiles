@@ -23,5 +23,6 @@ complete -o nospace -F _python_argcomplete gsutil
 # aws cli
 source /usr/local/bin/aws_zsh_completer.sh
 
-export NVM_DIR="/Users/01013863/.nvm"
+export NVM_DIR="/Users/pengfeiz/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+eval "$(pyenv init -)"
