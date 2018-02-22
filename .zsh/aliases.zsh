@@ -1,3 +1,10 @@
+#--------------------------------------------------
+# Basic stuff
+# -------------------------------------------------
+alias less='less -I'
+alias grep='grep --color=tty'
+alias egrep='egrep --color=tty'
+
 # -------------------------------------------------------------------
 # use nocorrect alias to prevent auto correct from "fixing" these
 # -------------------------------------------------------------------
