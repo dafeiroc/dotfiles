@@ -2,8 +2,8 @@
 # Basic stuff
 # -------------------------------------------------
 alias less='less -I'
-alias grep='grep --color=tty'
-alias egrep='egrep --color=tty'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
 
 # -------------------------------------------------------------------
 # use nocorrect alias to prevent auto correct from "fixing" these
