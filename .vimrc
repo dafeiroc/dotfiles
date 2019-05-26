@@ -10,7 +10,7 @@ let g:mapleader = ','
 syntax on
 
 " history : how many lines of history VIM has to remember
-set history=2000
+set history=5000
 
 " filetype
 filetype on

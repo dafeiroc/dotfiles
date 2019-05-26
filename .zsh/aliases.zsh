@@ -202,3 +202,7 @@ alias kthxbai='halt'
 alias dockerrm='docker rm $(docker ps -q -f status=exited)'
 
 alias deletef='find . -type d -name ".svn" -print -exec rm -rf {} \;'
+
+## java
+alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11.0.3`; java -version"
+alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_131`; java -version"
